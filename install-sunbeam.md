@@ -1,12 +1,11 @@
 # Installing the Sunbeam metagenomics pipeline
 
 In this post, we'll install and test the Sunbeam metagenomics pipeline
-on a Google Cloud instance.
+on a Google Cloud instance.  Here, I assume that you've been able to
+follow Dan's instructions in part 1 to launch a new instance and
+connect via SSH.
 
 ## Launch the instance 
-
-Follow Dan's instructions in part 1 to launch a new instance and
-connect via SSH.
 
 After launching, we need to install some system programs on the
 computer.  For this, we'll use the `apt-get` utility provided with the
