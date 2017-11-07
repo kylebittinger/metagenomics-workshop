@@ -45,8 +45,8 @@ Now, we're ready to actually install the Sunbeam analysis pipeline.
 Sunbeam provides a script for this purpose.
 
 ```bash
-./install.sh
-./install_igv.sh
+bash install.sh
+bash install_igv.sh
 ```
 
 The pipeline uses a system called Conda to manage all the
