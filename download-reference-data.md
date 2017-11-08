@@ -111,7 +111,7 @@ point to our reference data directories and specify parameters for
 each step.
 
 ```bash
-cat << EOF > ${WORKDIR}/sunbeam-master/deadmice-config.yml
+cat << EOF > ${HOME}/sunbeam-master/deadmice-config.yml
 # Sunbeam configuration file
 #
 # Paths:
@@ -127,7 +127,7 @@ cat << EOF > ${WORKDIR}/sunbeam-master/deadmice-config.yml
 
 # General options
 all:
-  root: "${WORKDIR}/deadmice/"
+  root: "${HOME}/deadmice/"
   data_fp: "data_files"
   output_fp: "sunbeam_output"
   filename_fmt: "{sample}_{rp}.fastq"
@@ -145,7 +145,7 @@ qc:
   trailing: 3
   slidingwindow: [4,15]
   minlen: 36
-  adapter_fp: "${WORKDIR}/miniconda3/envs/sunbeam/share/trimmomatic/adapters/NexteraPE-PE.fa"
+  adapter_fp: "${HOME}/miniconda3/envs/sunbeam/share/trimmomatic/adapters/NexteraPE-PE.fa"
   # Cutadapt
   fwd_adapters: ['GTTTCCCAGTCACGATC', 'GTTTCCCAGTCACGATCNNNNNNNNNGTTTCCCAGTCACGATC']
   rev_adapters: ['GTTTCCCAGTCACGATC', 'GTTTCCCAGTCACGATCNNNNNNNNNGTTTCCCAGTCACGATC']
@@ -171,7 +171,7 @@ assembly:
   suffix: assembly
   min_length: 300
   threads: 4
-  cap3_fp: "${WORKDIR}/sunbeam-master/local/CAP3"
+  cap3_fp: "${HOME}/sunbeam-master/local/CAP3"
 
 
 # Contig annotation
@@ -197,7 +197,7 @@ blastdbs:
 mapping:
   suffix: mapping
   genomes_fp: ""
-  igv_fp: "${WORKDIR}/sunbeam-master/local/IGV/igv"
+  igv_fp: "${HOME}/sunbeam-master/local/IGV/igv"
   threads: 4
   keep_unaligned: False
   igv_prefs:
