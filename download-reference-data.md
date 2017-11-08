@@ -1,7 +1,10 @@
-# Downloading the reference data
+# Download the reference data
 
 > Note: run these commands on the *remote computer*, not on your
 > laptop.
+
+> If you're re-connecting to your Google Cloud instance, please run
+> `source activate sunbeam` to "turn on" your analysis software.
 
 ```bash
 cd ~
