@@ -1,3 +1,3 @@
-# Metagenomics analysis workshop 2017
+# Metagenomics analysis workshop
 
 
