@@ -12,10 +12,11 @@ for 100 GB of hard drive space.  The operating system will be Ubuntu Linux
 18.04 LTS.  This is a typical Linux system, with no special bioinformatics
 software installed.
 
-We will install all the software we need in your home directory using Conda.
-This method requires no administrative priveleges, so you should be able to use
-it almost anywhere. After installation, we'll obtain our data, configure the
-pipeline, and run the pipeline to generate output files and a report.
+We will install all the software we need in your home directory using a system
+called Conda. This approach requires no administrative priveleges, so you
+should be able to use it almost anywhere. After installation, we'll obtain our
+data, configure the pipeline, and run the pipeline to generate output files and
+a report.
 
 ## Installation
 
@@ -33,7 +34,13 @@ cd sunbeam-stable
 bash install.sh
 ```
 
-Follow instructions, close and re-open the terminal window.
+Follow instructions, and execute the command shown.
+
+```{bash}
+echo "export PATH=$PATH:/home/kylebittinger/miniconda3/bin" >> ~/.bashrc
+```
+
+Following the instructions, close and re-open the terminal window.
 
 ```{bash}
 source activate sunbeam
@@ -41,9 +48,18 @@ source activate sunbeam
 
 ## Upload data files
 
+Our data files are deposited at NCBI's Sequence Read Archive (SRA). If you
+Google "conda sra", you will find that your first hit is for a software package
+named "sra-tools".  Let's execute the installation command from that page to
+install this software.
+
 ```{bash}
-conda install sra-tools
+conda install -c bioconda sra-tools
 ```
+
+Using `sra-tools`, we can download samples by accession number.  We will grab a
+small number of samples from the PLEASE study (Pediatric Longitudinal Study of
+Semi-Elemental Diet and Stool Microbiome), which was conducted at Penn and CHOP.
 
 ```{bash}
 cd ~
@@ -153,6 +169,11 @@ sunbeam run --configfile workshop-project/sunbeam_config.yml --jobs 7
 ```
 
 ## Generate a report
+
+```{bash}
+sudo apt update
+sudo apt install r-base
+```
 
 To look at some of our results, we'll install a Sunbeam extension and generate
 a report.
