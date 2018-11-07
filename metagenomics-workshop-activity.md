@@ -94,7 +94,7 @@ ls
 Explore the samples file.
 
 ```{bash}
-nano sunbeam_config.yml
+nano samples.csv
 ```
 
 Explore the configuration file.
