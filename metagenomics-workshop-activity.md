@@ -50,7 +50,7 @@ Following the instructions, close and re-open the terminal window.
 source activate sunbeam
 ```
 
-## Upload data files
+## Download data files
 
 Our data files are deposited at NCBI's Sequence Read Archive (SRA). If you
 Google "conda sra", you will find that your first hit is for a software package
