@@ -41,7 +41,7 @@ bash install.sh
 Follow instructions, and execute the command shown.
 
 ```{bash}
-echo "export PATH=$PATH:/home/kylebittinger/miniconda3/bin" >> ~/.bashrc
+echo "export PATH=$PATH:~/miniconda3/bin" >> ~/.bashrc
 ```
 
 Following the instructions, close and re-open the terminal window.
