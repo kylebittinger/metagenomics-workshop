@@ -7,10 +7,10 @@ very similar on Amazon's service, or on another cloud computing provider.
 Google provides new users with a substantial credit towards computing costs,
 and allows us to launch a terminal window conveniently from the web browser.
 
-We will request a computer with 8 CPU cores and 52 GB of memory.  We'll ask
+We will request a VM instance with 8 CPU cores and 52 GB of memory.  We'll ask
 for 100 GB of hard drive space.  The operating system will be Ubuntu Linux
 18.04 LTS.  This is a typical Linux system, with no special bioinformatics
-software installed.
+software installed. (Make sure you don't select the "Minimal" version.)
 
 We will install all the software we need in your home directory using a system
 called Conda. This approach requires no administrative priveleges, so you
@@ -22,6 +22,9 @@ a report.
 
 These steps are copy/pasted from the Sunbeam documentation at
 http://sunbeam.readthedocs.io/en/latest/quickstart.html
+
+To open a terminal window in your browser, select the "Open in browser window" 
+option under the "Connect" column on your Google Cloud VM instances page.
 
 ```{bash}
 cd ~
