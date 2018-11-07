@@ -24,7 +24,8 @@ These steps are copy/pasted from the Sunbeam documentation at
 http://sunbeam.readthedocs.io/en/latest/quickstart.html
 
 To open a terminal window in your browser, select the "Open in browser window" 
-option under the "Connect" column on your Google Cloud VM instances page.
+option under the "Connect" column on your Google Cloud VM instances page. 
+Execute the following commands:
 
 ```{bash}
 cd ~
@@ -113,7 +114,8 @@ We need two reference databases to run this sample: a database of host DNA
 sequence to remove, and a database of bacterial DNA to match against.
 
 We'll get the human genome data from UCSC.  Filtering against the entire human
-genome takes too long, so we'll only filter against chromosome 1.
+genome takes too long, so we'll only filter against chromosome 1. The following
+commands download and unzip the .fasta file for chromosome 1:
 
 ```{bash}
 cd ~
