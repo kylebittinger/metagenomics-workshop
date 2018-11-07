@@ -69,13 +69,13 @@ Semi-Elemental Diet and Stool Microbiome), which was conducted at Penn and CHOP.
 cd ~
 mkdir workshop-data
 cd workshop-data
-fasterq-dump SRR2145310
-fasterq-dump SRR2145329
-fasterq-dump SRR2145381
-fasterq-dump SRR2145353
-fasterq-dump SRR2145354
-fasterq-dump SRR2145492
-fasterq-dump SRR2145498
+fasterq-dump SRR2145310 -e 8
+fasterq-dump SRR2145329 -e 8
+fasterq-dump SRR2145381 -e 8
+fasterq-dump SRR2145353 -e 8
+fasterq-dump SRR2145354 -e 8
+fasterq-dump SRR2145492 -e 8
+fasterq-dump SRR2145498 -e 8
 ```
 
 First mini-lecture.
