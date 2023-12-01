@@ -1,6 +1,31 @@
-# Shotgun Metagenomics Workshop
+# Shotgun Metagenomics Workshop 2024
 
-VM: 50GB hard drive space, 12GB memory, must turn on networking, default linux image.
+To carry out our bioinformatics work, we'll order up a virtual machine
+(VM) from Google Cloud. Once you're signed up, go to the console. In
+the "Quick Access" area, click on the box for "Compute Engine." The
+screen should now say "Compute Engine" in the upper left. Next to
+"Compute Engine," it should say "VM instances." This is your dashboad
+for managing virtual machines.
+
+We need to create a new virtual machine instance to do our work, so
+click on "CREATE INSTANCE." We need to change a few settings for our
+bioinformatics work. Here's a summary of the important stuff:
+
+    * Change the name to something you like.
+    * The default machine configuration, E2, is fine.
+    * Under "Machine type," go to the "CUSTOM" tab and crank up the
+      memory all the way to 16 GB.
+    * The default number of cores is fine for this workshop.
+    * Under "Boot disk," click on "CHANGE" and set the size to 50 GB.
+    * The default operating system and version, Debian GNU/Linux 11
+      (bullseye), is fine for this workshop.
+    * Under "Firewall," check the boxes for "Allow HTTP traffic" and
+      "Allow HTTPS traffic."
+
+The machine will take a minute to start up. Once it does, you'll see a
+button that says "SSH" under the "Connect" column on the right. When
+you click on this button, your web browser will launch a command-line
+terminal window. We are now ready to get started with bioinformatics.
 
 ## 1. Download metagenomic data
 
