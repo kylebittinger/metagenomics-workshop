@@ -1,0 +1,11 @@
+#SampleID	sample_type	subject_id	age
+Feces.2-taxa	Feces	Subject 2	37
+Feces.8-taxa	Feces	Subject 8	35
+Feces.15-taxa	Feces	Subject 15	23
+Feces.18-taxa	Feces	Subject 18	34
+Feces.19-taxa	Feces	Subject 19	29
+Saliva.17-taxa	Saliva	Subject 17	26
+Saliva.31-taxa	Saliva	Subject 31	48
+Saliva.100-taxa	Saliva	Subject 100	28
+Saliva.111-taxa	Saliva	Subject 111	44
+Saliva.151-taxa	Saliva	Subject 151	47
