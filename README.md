@@ -33,8 +33,8 @@ rm saliva_feces_data.tar.gz
 
 We're only going to download one chromosome, because it takes too long
 to index the entire human genome for filtering during the
-workshop. The data files have been pre-filtered to remove all the
-other chromosomes.
+workshop. We'll use a trick to remove the remaining human reads at the
+end of the workflow.
 
 ```bash
 wget 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=CM000663.2&rettype=fasta' -O humanch1.fasta
@@ -59,18 +59,21 @@ so the different software components don't clash with each other.
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py311_23.10.0-1-Linux-x86_64.sh
 bash Miniconda3-py311_23.10.0-1-Linux-x86_64.sh
-# License: hit enter to continue, hit the spacebar until you get to the bottom
-#   then type "yes" to accept terms
-# Miniconda3 will be installed into this location: hit enter to confirm the location
+# License agreement: hit return to see the license, then hit the spacebar
+#   until you get to the bottom, then type "yes" to accept the terms.
+# Miniconda3 will be installed into this location: hit return to confirm the
+#   location.
 # Do you wish to update your shell profile to automatically initialize conda?
-#   type "yes" and hit return
+#   Type "yes" and hit return.
 ```
 
 At this point you'll be instructed to close and re-open the terminal
-window. Please do this. When the window re-opens, you should see
-"(base)" on the left-hand side of your prompt. This indicates that
-you're in the base environment for Conda, and that your installation
-was most likely successful.
+window. Please do this.
+
+When the window re-opens, you should see "(base)" on the left-hand
+side of your prompt. This indicates that you're in the base
+environment for Conda, and that your installation was most likely
+successful.
 
 Check out the results by listing your available environments. Right
 now, the base environment is all you've got. Don't worry, we'll make
@@ -95,14 +98,28 @@ bioinformatics processing.
 wget https://github.com/sunbeam-labs/sunbeam/releases/download/v4.1.0/sunbeam.tar.gz
 mkdir sunbeam4.1.0
 tar xvzf sunbeam.tar.gz -C sunbeam4.1.0
+```
+
+We need to change directories temporarily to install Sunbeam. This is
+the only time we'll change directories during the workshop. After you
+install Sunbeam, it's very important that you run the `cd` command to
+go back to your home directory.
+
+```bash
 cd sunbeam4.1.0
 bash install.sh
 cd
+```
+
+Let's activate the Conda environment for Sunbeam.
+
+```bash
 conda activate sunbeam4.1.0
 ```
 
 The Conda environment for Sunbeam should now be activated. If so, you
-will see "(sunbeam4.1.0)" in your command prompt.
+will see "(sunbeam4.1.0)" in your command prompt. Let's ask Sunbeam
+what it can do.
 
 ```bash
 sunbeam --help
@@ -130,7 +147,10 @@ there.
 ls sunbeam4.1.0/extensions
 ```
 
-# 6. Download taxonomic database
+## 6. Download taxonomic database
+
+We need to download a reference database for the taxonomic
+assignments.
 
 ```bash
 wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20231009.tar.gz
@@ -138,11 +158,20 @@ mkdir krakendb
 tar xvzf k2_standard_08gb_20231009.tar.gz -C krakendb
 ```
 
+Let's look inside the `krakendb` directory to see what files are
+there.
+
+```bash
+ls krakendb
+```
+
+Clean up.
+
 ```bash
 rm k2_standard_08gb_20231009.tar.gz
 ```
 
-# 7. Initialize and configure our project
+## 7. Initialize and configure our project
 
 ```bash
 sunbeam init workshop --data_fp saliva_feces_data
@@ -152,7 +181,7 @@ nano workshop/sunbeam_config.yml
 # Hit Control-x (^x) to exit, "y" to save modified buffer, and enter to confirm the filename
 ```
 
-# 8. Run the pipeline to generate decontaminated FASTQ files
+## 8. Run the pipeline to generate decontaminated FASTQ files
 
 ```bash
 sunbeam run --profile workshop all_decontam
@@ -163,7 +192,7 @@ less workshop/sunbeam_output/qc/reports/preprocess_summary.tsv
 # Hit q to exit
 ```
 
-# 9. Run the pipeline to generate a taxonomic summary
+## 9. Run the pipeline to generate a taxonomic summary
 
 ```bash
 sunbeam run --profile workshop all_classify
@@ -174,7 +203,7 @@ less workshop/sunbeam_output/classify/kraken/all_samples.tsv
 # Hit q to exit
 ```
 
-# 10. Spruce up the taxonomic summary
+## 10. Spruce up the taxonomic summary
 
 Prepare and activate a new Conda environment
 
@@ -209,3 +238,12 @@ less saliva_feces_finished.biom
 # Hit q to quit
 ```
 
+## 11. Download the finished output file
+
+As a last step in the bioinformatics workflow, we're going to use the
+handy download button to download the taxonomic assignments to our
+laptops for use with MicrobiomeDB. You will need to enter the absolute filepath in the popup window. Use this command to print out the absolute filepath, then copy it to your clipboard before hitting the Download button.
+
+```bash
+realpath saliva_feces_finished.biom
+```
