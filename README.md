@@ -11,16 +11,16 @@ We need to create a new virtual machine instance to do our work, so
 click on "CREATE INSTANCE." We need to change a few settings for our
 bioinformatics work. Here's a summary of the important stuff:
 
-    * Change the name to something you like.
-    * The default machine configuration, E2, is fine.
-    * Under "Machine type," go to the "CUSTOM" tab and crank up the
-      memory all the way to 16 GB.
-    * The default number of cores is fine for this workshop.
-    * Under "Boot disk," click on "CHANGE" and set the size to 50 GB.
-    * The default operating system and version, Debian GNU/Linux 11
-      (bullseye), is fine for this workshop.
-    * Under "Firewall," check the boxes for "Allow HTTP traffic" and
-      "Allow HTTPS traffic."
+* Change the name to something you like.
+* The default machine configuration, E2, is fine.
+* Under "Machine type," go to the "CUSTOM" tab and crank up the
+  memory all the way to 16 GB.
+* The default number of cores is fine for this workshop.
+* Under "Boot disk," click on "CHANGE" and set the size to 50 GB.
+* The default operating system and version, Debian GNU/Linux 11
+  (bullseye), is fine for this workshop.
+* Under "Firewall," check the boxes for "Allow HTTP traffic" and
+  "Allow HTTPS traffic."
 
 The machine will take a minute to start up. Once it does, you'll see a
 button that says "SSH" under the "Connect" column on the right. When
