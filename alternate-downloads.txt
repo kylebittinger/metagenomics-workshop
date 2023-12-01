@@ -1,7 +1,0 @@
-Alternate download for human chromosome 1 data:
-
-wget -O chr1.fa.gz https://goo.gl/d791vR
-
-Alternate download for kraken database:
-
-wget -O minikraken_20171101_4GB_dustmasked.tgz https://goo.gl/ggwbCi
