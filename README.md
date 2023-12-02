@@ -44,6 +44,9 @@ Check out the results.
 
 ```bash
 ls -lh saliva_feces_data
+```
+
+```bash
 zless saliva_feces_data/Feces.15_R1.fastq.gz
 # Hit q to exit
 ```
@@ -203,7 +206,8 @@ sunbeam init workshop --data_fp saliva_feces_data
 nano workshop/sunbeam_config.yml
 # Change host_fp to "/home/yourusername/host"
 # Change kraken_db_fp to "/home/yourusername/krakendb"
-# Hit Control-x (^x) to exit, "y" to save modified buffer, and enter to confirm the filename
+# Hit Control-x (^x) to exit, then "y" to save modified buffer,
+#   then hit return to confirm the filename
 ```
 
 ## 8. Run the pipeline to generate decontaminated FASTQ files
