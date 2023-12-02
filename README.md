@@ -230,7 +230,10 @@ less workshop/sunbeam_output/classify/kraken/all_samples.tsv
 
 ## 10. Spruce up the taxonomic summary
 
-Prepare and activate a new Conda environment
+We need to make some revisions to the file of taxonomic assignments
+before we're ready to move on with the downstream analysis. For this
+work, we'll create a new Conda environment from the template that
+comes with our `sbx_kraken` extension.
 
 ```bash
 # prompt should say "(sunbeam4.1.0)"
@@ -241,34 +244,62 @@ conda activate sbx_kraken
 # prompt should now say "(sbx_kraken)"
 ```
 
-Filter the table to remove any remaining human reads. You will see a couple of warning messages from the last command but you can safely ignore them.
+The first thing we'll do is filter the table to remove any remaining
+human reads. When we ran the pipeline, remember that we only removed
+part of chromosome 1. As you run the last command, you will see a
+couple of warning messages, but you can safely ignore them.
 
 ```bash
 biom table-ids --observations -i workshop/sunbeam_output/classify/kraken/all_samples.biom > saliva_feces_observation_ids.txt
 grep -vx 9606 saliva_feces_observation_ids.txt > saliva_feces_observation_ids_nohuman.txt
-biom subset-table -a observation -s saliva_feces_observation_ids_nohuman.txt -i workshop/sunbeam_output/classify/kraken/all_samples.biom -o saliva_feces_nohuman.biom
+biom subset-table -a observation -s saliva_feces_observation_ids_nohuman.txt -i workshop/sunbeam_output/classify/kraken/all_samples.biom -o temp_nohuman.biom
 ```
 
-Add metadata to the taxonomic summary file in BIOM format.
-
+The second thing we'll do is to add some sample metadata to the BIOM
+file.
 
 ```bash
 wget https://raw.githubusercontent.com/kylebittinger/metagenomics-workshop/updates-2024/saliva_feces_metadata.txt
-biom add-metadata -m saliva_feces_metadata.txt --output-as-json -i saliva_feces_nohuman.biom -o saliva_feces_finished.biom
+biom add-metadata -m saliva_feces_metadata.txt --output-as-json -i temp_nohuman.biom -o temp_metadata.biom
 ```
 
+Finally, we need to fix up the species-level assignments. By default,
+the species-level taxonomic assignments only include the specific
+name, and are missing the generic name. This makes them hard to
+decipher when we do the downstream bioinformatic analysis. Usually, we
+would take care of this later in the analysis, but for today, we'll
+run a command to fix the names right in the BIOM file. We're doing
+some "command line magic" here, so don't worry too much about
+deciphering the command.
+
 ```bash
-less saliva_feces_finished.biom
+perl -072 -pe's/g__([^"]+)", "s__([^"]+)/g__$1", "s__$1 $2/' temp_metadata.biom > saliva_feces.biom
+```
+
+We have our finished product. Let's see what the file looks like.
+
+```bash
+less saliva_feces.biom
 # Hit G to see the bottom of the file
 # Hit q to quit
+```
+
+Clean up.
+
+```bash
+rm temp_nohuman.biom
+rm temp_metadata.biom
 ```
 
 ## 11. Download the finished output file
 
 As a last step in the bioinformatics workflow, we're going to use the
 handy download button to download the taxonomic assignments to our
-laptops for use with MicrobiomeDB. You will need to enter the absolute filepath in the popup window. Use this command to print out the absolute filepath, then copy it to your clipboard before hitting the Download button.
+laptops for use with MicrobiomeDB. You will need to enter the absolute
+filepath in the popup window. Use this command to print out the
+absolute filepath, then copy it to your clipboard before hitting the
+Download button.
 
 ```bash
-realpath saliva_feces_finished.biom
+realpath saliva_feces.biom
 ```
